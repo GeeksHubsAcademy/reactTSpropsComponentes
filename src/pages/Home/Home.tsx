@@ -32,6 +32,7 @@ export const Home = () => {
         <>
           {characters.map((cartoon: Person) => {
             return <CardCharacter   
+                key={cartoon.id}
                 character={cartoon}
             />;
           })}
