@@ -11,12 +11,9 @@ export const TextInput = ({name, type, placeholder, state}: InputProps) => {
 
     const inputHandler = ({ target }: React.ChangeEvent<HTMLInputElement>, state:Function) => {
         
-        const { name, value } = target;
+        const { value } = target;
 
-        state((prevState : any) => ({
-          ...prevState,
-          [name]: value,
-        }));
+        state(value);
     };
 
     return (
