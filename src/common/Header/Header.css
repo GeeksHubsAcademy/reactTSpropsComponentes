@@ -1,0 +1,28 @@
+
+.headerDesign {
+
+    height: 8em;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background-color: darkcyan;
+}
+
+
+.linkDesign {
+
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+
+    cursor: pointer;
+
+}
+
+.linkDesign:hover {
+
+    color: grey;
+    transition: 0.3s;
+}

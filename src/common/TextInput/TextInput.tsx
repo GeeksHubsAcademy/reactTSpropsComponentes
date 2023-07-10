@@ -1,4 +1,6 @@
 
+import './TextInput.css';
+
 interface InputProps {
     name: string,
     type: string,
@@ -17,7 +19,7 @@ export const TextInput = ({name, type, placeholder, state}: InputProps) => {
     };
 
     return (
-        <input
+        <input className='inputDesign'
             type={type}
             placeholder={placeholder}
             name={name}
