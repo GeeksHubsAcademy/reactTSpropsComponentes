@@ -13,13 +13,17 @@ export const TextInput = ({name, type, placeholder, state}: InputProps) => {
 
     const inputHandler = ({ target }: React.ChangeEvent<HTMLInputElement>, state:Function) => {
         
-        const { value } = target;
+        const { value, name } = target;
 
-        state(value);
+        state((prevState : any) => ({
+            ...prevState,
+            [name]: value,
+          }));
+
     };
 
     return (
-        <input className='inputDesign'
+        <input className='my-4 inputDesign'
             type={type}
             placeholder={placeholder}
             name={name}
