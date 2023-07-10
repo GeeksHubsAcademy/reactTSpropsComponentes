@@ -1,4 +1,5 @@
 
+import { Credentials } from '../../pages/Login/Login';
 import './TextInput.css';
 
 interface InputProps {
@@ -8,16 +9,15 @@ interface InputProps {
     state: Function,
 }
 
-
 export const TextInput = ({name, type, placeholder, state}: InputProps) => {
 
     const inputHandler = ({ target }: React.ChangeEvent<HTMLInputElement>, state:Function) => {
         
         const { value, name } = target;
 
-        state((prevState : any) => ({
+        state((prevState : Credentials) => ({
             ...prevState,
-            [name]: value,
+            [name]: value
           }));
 
     };

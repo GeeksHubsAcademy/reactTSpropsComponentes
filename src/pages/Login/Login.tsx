@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { TextInput } from "../../common/TextInput/TextInput";
 import { logMe } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
 
+export interface Credentials {
+  email: string;
+  password: string;
+}
+
 export const Login = () => {
   const navigate = useNavigate();
-  interface Credentials {
-    email: string;
-    password: string;
-  }
+  
 
   const [userCredentials, setUserCredentials] = useState<Credentials>({
     email: "",
@@ -18,14 +20,14 @@ export const Login = () => {
 
   const [welcome, setWelcome] = useState<string>("");
 
-  // useEffect(()=> {
+  useEffect(()=> {
 
-  //   if(userCredentials.email !== ""){
+    if(userCredentials.email !== ""){
 
-  //       console.log(userCredentials)
-  //   }
+        console.log(userCredentials)
+    }
 
-  // }, [userCredentials])
+  }, [userCredentials])
 
   const submitHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
