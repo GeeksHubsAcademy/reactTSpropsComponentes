@@ -4,8 +4,8 @@ import { TextInput } from "../../common/TextInput/TextInput";
 import { logMe } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
 
-import { useDispatch } from "react-redux";
-import { login } from "../userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { login, userData } from "../userSlice";
 
 export interface Credentials {
   email: string;
@@ -14,6 +14,9 @@ export interface Credentials {
 
 export const Login = () => {
   const navigate = useNavigate();
+
+  //Conecto a REDUX en modo lectura
+  const reduxUserCredentials = useSelector(userData);
 
   //Conecto a REDUX en modo escritura
   const dispatch = useDispatch();
@@ -25,6 +28,12 @@ export const Login = () => {
   });
 
   const [welcome, setWelcome] = useState<string>("");
+
+  useEffect(()=> {
+    if(reduxUserCredentials.credentials?.token){
+      navigate("/");
+    }
+  },[]);
 
   useEffect(()=> {
 

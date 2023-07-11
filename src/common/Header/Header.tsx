@@ -63,7 +63,7 @@ export const Header = () => {
               </>
             ) : (
               <>
-                <Col className="linkDesign">{datosCredencialesRedux.credentials?.name}</Col>
+                <Col className="linkDesign" onClick={()=>navigate("/profile")}>{datosCredencialesRedux.credentials?.name}</Col>
                 <Col className="linkDesign" onClick={()=>dispatch(userout({credentials: {}}))}>Log out</Col>
               </>
             )}
