@@ -2,8 +2,8 @@
 import './Header.css';
 
 //Método de conexión en modo lectura a RDX.
-import { useSelector } from "react-redux";
-import { userData } from "../../pages/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { userData, userout } from "../../pages/userSlice";
 
 import { TextInput } from "../TextInput/TextInput";
 import { useState, useEffect } from "react";
@@ -18,6 +18,10 @@ export const Header = () => {
 
   //Guardo los datos de REDUX en una constante para poder acceder a ellos en Header
   const datosCredencialesRedux = useSelector(userData);
+
+  //Instancio Redux en modo escritura....
+
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -60,7 +64,7 @@ export const Header = () => {
             ) : (
               <>
                 <Col className="linkDesign">{datosCredencialesRedux.credentials?.name}</Col>
-                <Col className="linkDesign">Log out</Col>
+                <Col className="linkDesign" onClick={()=>dispatch(userout({credentials: {}}))}>Log out</Col>
               </>
             )}
           </Row>
