@@ -4,6 +4,9 @@ import { TextInput } from "../../common/TextInput/TextInput";
 import { logMe } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
 
+import { useDispatch } from "react-redux";
+import { login } from "../userSlice";
+
 export interface Credentials {
   email: string;
   password: string;
@@ -11,6 +14,9 @@ export interface Credentials {
 
 export const Login = () => {
   const navigate = useNavigate();
+
+  //Conecto a REDUX en modo escritura
+  const dispatch = useDispatch();
   
 
   const [userCredentials, setUserCredentials] = useState<Credentials>({
@@ -36,8 +42,8 @@ export const Login = () => {
       .then((res) => {
         console.log(res);
 
-        //Al no dominar aún RDX, guardamos los datos en localStorage....
-        localStorage.setItem("credenciales", JSON.stringify(res));
+        //Guardo en Redux
+        dispatch(login({ credentials: res}))
 
         setWelcome(res.name);
 
