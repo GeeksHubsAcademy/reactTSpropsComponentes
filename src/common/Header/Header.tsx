@@ -4,16 +4,17 @@ import './Header.css';
 //Método de conexión en modo lectura a RDX.
 import { useDispatch, useSelector } from "react-redux";
 import { userData, userout } from "../../pages/userSlice";
-
+import { deleteFindings, addFindings } from '../../pages/searchSlice';
 import { TextInput } from "../TextInput/TextInput";
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { bringCharactersName } from '../../services/apiCalls';
 
 
 export const Header = () => {
 
-  const [searchInfo, setSearchInfo] = useState<string>("");
+  const [searchInfo, setSearchInfo] = useState<any>({});
   // const [token, setToken] = useState<string>("");
 
   //Guardo los datos de REDUX en una constante para poder acceder a ellos en Header
@@ -26,8 +27,19 @@ export const Header = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (searchInfo !== "") {
-      console.log("ahora la búsque vale......", searchInfo);
+    if (searchInfo.search && searchInfo.search !== "") {
+      bringCharactersName(searchInfo)
+        .then(
+          resultado => {
+            //Guardo en Redux los resultados de búsqueda
+            dispatch(addFindings({findings: resultado}))
+          }
+        )
+        .catch(error => console.log(error));
+      
+    }else {
+      //Enviaremos a redux .... un vaciado......
+            dispatch(deleteFindings({findings: []}))
     }
   }, [searchInfo]);
 

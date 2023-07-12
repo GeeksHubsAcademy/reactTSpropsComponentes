@@ -14,6 +14,13 @@ export const bringCharacters = async () => {
   return data.results;
 };
 
+export const bringCharactersName = async (name:any) => {
+
+  let { data } = await axios.get(`${RM_URL}/character/?name=${name.search}`)
+
+  return data.results;
+}
+
 export const logMe = async (body: LoginData) => {
   // let res = await axios.post(`${URL}/auth/login`, body);
 
