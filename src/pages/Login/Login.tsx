@@ -58,7 +58,7 @@ export const Login = () => {
 
         setTimeout(() => {
           navigate("/");
-        }, 4500);
+        }, 750);
       })
       .catch((error) => console.log(error));
   };
