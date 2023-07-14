@@ -5,3 +5,8 @@
     width: 16em;
     
 }
+
+.errorInput {
+
+    border: 0.1em solid red;
+}

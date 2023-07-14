@@ -59,7 +59,9 @@ export const Header = () => {
             name="search"
             type="text"
             placeholder="search a character..."
+            design="my-4 inputDesign"
             state={setSearchInfo}
+            errorState={()=>{}}
           />
         </Col>
         <Col

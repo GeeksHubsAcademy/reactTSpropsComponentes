@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login, userData } from "../userSlice";
 
+import './Login.css';
+
 export interface Credentials {
   email: string;
   password: string;
@@ -26,6 +28,11 @@ export const Login = () => {
     email: "",
     password: "",
   });
+
+  const [userError, setUserError] = useState({
+    email: "",
+    password: ""
+  })
 
   const [welcome, setWelcome] = useState<string>("");
 
@@ -87,14 +94,20 @@ export const Login = () => {
                   name="email"
                   type="email"
                   placeholder="write an email..."
+                  design={userError.email ? ("my-4 inputDesign errorInput") : ("my-4 inputDesign")}
                   state={setUserCredentials}
+                  errorState={setUserError}
                 />
+                <div className='msgError'>{userError.email}</div>
                 <TextInput
                   name="password"
                   type="password"
                   placeholder="write a password..."
+                  design={userError.password ? ("my-4 inputDesign errorInput") : ("my-4 inputDesign")}
                   state={setUserCredentials}
+                  errorState={setUserError}
                 />
+                <div className='msgError'>{userError.password}</div>
                 <Button onClick={(e) => submitHandler(e)}>log me!</Button>
               </Col>
             </Row>
