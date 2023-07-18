@@ -67,3 +67,10 @@ export const registerMe = async (body: RegisterData) => {
   return data;
 
 }
+
+export const profileUser = async (id: string) => {
+
+  let { data } = await axios.get(`${BASIC_API_URL}/users/${id}`);
+
+  return data;
+}
