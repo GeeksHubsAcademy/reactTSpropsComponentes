@@ -2,10 +2,19 @@ import axios from "axios";
 
 const URL = "https://express-api-basic.vercel.app";
 const RM_URL = "https://rickandmortyapi.com/api";
+const BASIC_API_URL = "http://localhost:3000";
 
 interface LoginData {
   email: string;
   password: string;
+}
+
+interface RegisterData {
+  id: number,
+  name: string,
+  surname: string, 
+  age: number,
+  userId: number
 }
 
 export const bringCharacters = async () => {
@@ -50,3 +59,11 @@ export const logMe = async (body: LoginData) => {
 
   return res;
 };
+
+export const registerMe = async (body: RegisterData) => {
+
+  let { data } = await axios.post(`${BASIC_API_URL}/users`, body);
+
+  return data;
+
+}
