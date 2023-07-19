@@ -17,7 +17,7 @@ export const cartSlice = createSlice({
       remove: (state, action) => {
         return {
           ...state,
-          items: []
+          items: action.payload
         }
       }
       
