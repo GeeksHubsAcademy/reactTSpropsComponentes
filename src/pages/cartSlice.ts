@@ -1,13 +1,13 @@
 
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 export const cartSlice = createSlice({
     name: 'cart',
     initialState: {
-      items: []
+      items:<any>[]
     },
     reducers: {
-      add: (state, action) => {
+      add: (state, action: PayloadAction) => {
 
         return {
           ...state,
@@ -17,8 +17,7 @@ export const cartSlice = createSlice({
       remove: (state, action) => {
         return {
           ...state,
-          items: [...state.items, action.payload]
-
+          items: []
         }
       }
       

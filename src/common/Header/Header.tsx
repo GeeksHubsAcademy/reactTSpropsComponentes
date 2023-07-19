@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { bringCharactersName } from "../../services/apiCalls";
-import { Cart } from "../Cart/Cart";
+import { Cart, CartIcon } from "../CartIcon/CartIcon";
 
 export const Header = () => {
   const [searchInfo, setSearchInfo] = useState<any>({});
@@ -26,7 +26,6 @@ export const Header = () => {
 
   useEffect(() => {
     if (searchInfo.search && searchInfo.search !== "") {
-
       //Búsqueda con proceso de debouncing manual activado...
 
       const bringData = setTimeout(() => {
@@ -39,7 +38,7 @@ export const Header = () => {
           .catch((error) => console.log(error));
       }, 350);
 
-      return () => clearTimeout(bringData)
+      return () => clearTimeout(bringData);
     } else {
       //Enviaremos a redux .... un vaciado......
       dispatch(deleteFindings({ findings: [] }));
@@ -62,7 +61,7 @@ export const Header = () => {
             placeholder="search a character..."
             design="my-4 inputDesign"
             state={setSearchInfo}
-            errorState={()=>{}}
+            errorState={() => {}}
           />
         </Col>
         <Col
@@ -101,8 +100,8 @@ export const Header = () => {
                 >
                   Log out
                 </Col>
-                <Col>
-                  <Cart />
+                <Col onClick={()=>navigate("/cart")}>
+                  <CartIcon />
                 </Col>
               </>
             )}

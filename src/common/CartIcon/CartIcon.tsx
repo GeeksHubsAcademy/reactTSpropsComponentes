@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { cartData } from "../../pages/cartSlice";
 
-export const Cart = () => {
+export const CartIcon = () => {
 
     //Instancio RDX en modo lectura
 
