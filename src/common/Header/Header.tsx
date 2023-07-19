@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { bringCharactersName } from "../../services/apiCalls";
+import { Cart } from "../Cart/Cart";
 
 export const Header = () => {
   const [searchInfo, setSearchInfo] = useState<any>({});
@@ -99,6 +100,9 @@ export const Header = () => {
                   onClick={() => dispatch(userout({ credentials: {} }))}
                 >
                   Log out
+                </Col>
+                <Col>
+                  <Cart />
                 </Col>
               </>
             )}

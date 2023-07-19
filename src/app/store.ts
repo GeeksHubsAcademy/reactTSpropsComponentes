@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import userSlice from '../pages/userSlice';
 import detailSlice from '../pages/detailSlice';
 import searchSlice from '../pages/searchSlice';
+import cartSlice from '../pages/cartSlice';
 
 import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux';
@@ -13,7 +14,8 @@ import thunk from 'redux-thunk';
 const reducers = combineReducers({
     user: userSlice,
     detail: detailSlice,
-    search: searchSlice
+    search: searchSlice,
+    cart: cartSlice
 });
 
 const persistConfig = {
