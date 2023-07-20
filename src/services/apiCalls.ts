@@ -74,3 +74,20 @@ export const profileUser = async (id: string) => {
 
   return data;
 }
+
+export const newOrder = async (product_id: string, user_id: string) => {
+
+  console.log(product_id);
+
+  let body = {
+    id: 2,
+    user_id: user_id,
+    product_id: product_id,
+    date: "20/07/2023"
+  }
+
+  let { data } = await axios.post(`${BASIC_API_URL}/orders`, body);
+
+  return data;
+
+}
