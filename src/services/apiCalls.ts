@@ -54,7 +54,8 @@ export const logMe = async (body: LoginData) => {
     token: "askdlmfaskldmfasñlkdfmaslñdkfmaslñdkfm",
     name: "David",
     id: 5,
-    age: 37
+    age: 37,
+    rol: true
   }
 
   return res;

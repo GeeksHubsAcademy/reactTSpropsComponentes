@@ -24,6 +24,10 @@ export const Header = () => {
 
   const navigate = useNavigate();
 
+  useEffect(()=>{
+    console.log("asdfasdfasdf",datosCredencialesRedux.credentials)
+  },[datosCredencialesRedux])
+
   useEffect(() => {
     if (searchInfo.search && searchInfo.search !== "") {
       //Búsqueda con proceso de debouncing manual activado...
@@ -94,13 +98,21 @@ export const Header = () => {
                 >
                   {datosCredencialesRedux.credentials?.name}
                 </Col>
+                {datosCredencialesRedux.credentials.rol === true && (
+                  <Col
+                    className="linkDesign"
+                    onClick={() => navigate("/admin")}
+                  >
+                    admin
+                  </Col>
+                )}
                 <Col
                   className="linkDesign"
                   onClick={() => dispatch(userout({ credentials: {} }))}
                 >
                   Log out
                 </Col>
-                <Col onClick={()=>navigate("/cart")}>
+                <Col onClick={() => navigate("/cart")}>
                   <CartIcon />
                 </Col>
               </>
